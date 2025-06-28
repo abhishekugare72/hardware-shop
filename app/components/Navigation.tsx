@@ -93,7 +93,7 @@ export default function Navigation({
           </div>
 
           {/* Search and Actions */}
-          <div className="flex items-center space-x-4 lg:ml-4">
+          <div className="flex items-center space-x-4 lg:ml-4 ml-auto mr-2">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="lg:hidden p-3 bg-slate-100 text-slate-700 hover:bg-slate-200 transition-colors duration-200 rounded-2xl shadow-md"
