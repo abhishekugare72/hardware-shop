@@ -21,10 +21,20 @@ export default function Navigation({
 }: NavigationProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const [activeSection, setActiveSection] = useState<string | null>(null)
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20)
+      const sections = ['features', 'categories', 'services', 'about']
+      let foundSection: string | null = null
+      for (const section of sections) {
+        const el = document.getElementById(section)
+        if (el && window.scrollY >= el.offsetTop - 100) {
+          foundSection = section
+        }
+      }
+      setActiveSection(foundSection)
     }
     window.addEventListener("scroll", handleScroll, { passive: true })
     return () => window.removeEventListener("scroll", handleScroll)
@@ -42,7 +52,7 @@ export default function Navigation({
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 sm:h-18 md:h-20">
+        <div className="flex items-center h-16 sm:h-18 md:h-20">
           {/* Simplified Logo */}
           <motion.div whileHover={{ scale: 1.02 }} className="flex items-center space-x-3 cursor-pointer">
             <div className="w-12 h-12 bg-gradient-to-br from-slate-900 to-slate-700 rounded-2xl flex items-center justify-center shadow-lg">
@@ -56,41 +66,34 @@ export default function Navigation({
             </div>
           </motion.div>
 
-          {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-8">
-            <NavLink href="#" text="Materials" />
-            <NavLink href="#" text="Categories" />
-            <NavLink href="#" text="Services" />
-            <NavLink href="#" text="About" />
+          {/* Centered Navigation */}
+          <div className="hidden lg:flex flex-1 justify-center items-center space-x-8">
+            <NavLink href="#gallery" text="Materials" isActive={activeSection === 'gallery'} />
+            <NavLink href="#top-deals" text="Top Deals" isActive={activeSection === 'top-deals'} />
+            <NavLink href="#services" text="Services" isActive={activeSection === 'services'} />
+            <NavLink href="#about" text="About" isActive={activeSection === 'about'} />
+          </div>
+
+          {/* Right Side Actions (Bulk Orders & Contact Us) */}
+          <div className="hidden lg:flex items-center space-x-2 ml-auto">
             <motion.button
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               onClick={onContractorClick}
-              className="px-6 py-2 bg-gradient-to-r from-slate-900 to-slate-700 text-white rounded-xl text-sm font-semibold shadow-lg hover:shadow-xl transition-shadow duration-200"
+              className="px-6 py-2 bg-gradient-to-r from-slate-900 to-slate-700 text-white rounded-xl text-sm font-semibold shadow-lg hover:shadow-xl transition-shadow duration-200 whitespace-nowrap min-w-[120px]"
             >
               Bulk Orders
             </motion.button>
+            <a
+              href="#footer-contact"
+              className="px-6 py-2 bg-gradient-to-r from-green-500 to-emerald-600 text-white rounded-xl text-sm font-semibold shadow-lg hover:shadow-xl transition-shadow duration-200 whitespace-nowrap min-w-[120px] ml-2 focus-visible:ring-2 focus-visible:ring-green-400 outline-none"
+            >
+              Contact Us
+            </a>
           </div>
 
           {/* Search and Actions */}
-          <div className="flex items-center space-x-4">
-            <div className="hidden sm:block relative">
-              <input
-                type="text"
-                placeholder="Search materials..."
-                className="w-80 pl-12 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-slate-400 focus:border-transparent text-sm placeholder-slate-500 transition-all duration-200"
-              />
-              <Search className="absolute left-4 top-3.5 h-5 w-5 text-slate-400" />
-            </div>
-
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="p-3 bg-slate-100 text-slate-700 hover:bg-slate-200 transition-colors duration-200 rounded-2xl shadow-md"
-            >
-              <User className="h-5 w-5" />
-            </motion.button>
-
+          <div className="flex items-center space-x-4 lg:ml-4">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="lg:hidden p-3 bg-slate-100 text-slate-700 hover:bg-slate-200 transition-colors duration-200 rounded-2xl shadow-md"
@@ -108,19 +111,10 @@ export default function Navigation({
         className="lg:hidden overflow-hidden bg-white/98 backdrop-blur-md border-t border-slate-200/50"
       >
         <div className="px-6 py-6 space-y-4">
-          <div className="relative mb-6">
-            <input
-              type="text"
-              placeholder="Search materials..."
-              className="w-full pl-12 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-slate-400 text-sm"
-            />
-            <Search className="absolute left-4 top-3.5 h-5 w-5 text-slate-400" />
-          </div>
-
-          <MobileNavLink text="Materials" />
-          <MobileNavLink text="Categories" />
-          <MobileNavLink text="Services" />
-          <MobileNavLink text="About" />
+          <MobileNavLink text="Materials" href="#gallery" />
+          <MobileNavLink text="Top Deals" href="#top-deals" />
+          <MobileNavLink text="Services" href="#services" />
+          <MobileNavLink text="About" href="#about" />
 
           <motion.button
             whileHover={{ scale: 1.01 }}
@@ -130,30 +124,42 @@ export default function Navigation({
           >
             Bulk Orders
           </motion.button>
+          <a
+            href="#footer-contact"
+            className="w-full mt-2 px-6 py-3 bg-gradient-to-r from-green-500 to-emerald-600 text-white rounded-xl font-semibold shadow-lg text-center block focus-visible:ring-2 focus-visible:ring-green-400 outline-none"
+          >
+            Contact Us
+          </a>
         </div>
       </motion.div>
     </motion.nav>
   )
 }
 
-function NavLink({ href, text }: { href: string; text: string }) {
+function NavLink({ href, text, isActive }: { href: string; text: string; isActive?: boolean }) {
   return (
     <motion.a
       href={href}
       whileHover={{ y: -1 }}
-      className="relative text-slate-700 hover:text-slate-900 font-semibold transition-colors duration-200 text-sm group"
+      tabIndex={0}
+      className={`relative text-slate-700 hover:text-blue-700 font-medium transition-colors duration-200 text-xs sm:text-sm px-3 py-2 group rounded focus-visible:ring-2 focus-visible:ring-blue-400 outline-none hover:bg-blue-50 active:bg-blue-100 ${isActive ? 'text-blue-700 font-bold' : ''}`}
+      style={{ letterSpacing: '0.01em', lineHeight: '1.6' }}
+      aria-label={text}
     >
       {text}
-      <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-slate-800 group-hover:w-full transition-all duration-300 rounded-full" />
+      <span className={`absolute -bottom-0.5 left-1/2 -translate-x-1/2 h-0.5 bg-blue-600 rounded-full transition-all duration-300 ${isActive ? 'w-6 opacity-100' : 'w-0 opacity-0'} group-hover:w-6 group-hover:opacity-60`}/>
     </motion.a>
   )
 }
 
-function MobileNavLink({ text }: { text: string }) {
+function MobileNavLink({ text, href = "#" }: { text: string; href?: string }) {
   return (
     <a
-      href="#"
-      className="block text-slate-700 hover:text-slate-900 font-semibold transition-colors py-3 text-sm border-b border-slate-100 last:border-b-0"
+      href={href}
+      tabIndex={0}
+      className="block text-slate-700 hover:text-slate-900 font-semibold transition-colors py-3 text-sm border-b border-slate-100 last:border-b-0 rounded focus-visible:ring-2 focus-visible:ring-blue-400 outline-none hover:bg-blue-50 active:bg-blue-100"
+      style={{lineHeight: '1.6'}}
+      aria-label={text}
     >
       {text}
     </a>

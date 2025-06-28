@@ -46,85 +46,21 @@ export default function ContractorDashboard({ onClose }: ContractorDashboardProp
         </div>
 
         <div className="p-6 space-y-8">
-          {/* Stats Grid */}
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
-            {stats.map((stat, index) => (
-              <motion.div
-                key={stat.label}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-                className="bg-gradient-to-br from-slate-50 to-white p-6 rounded-xl border border-slate-200"
-              >
-                <div className="flex items-center justify-between mb-4">
-                  <stat.icon className={`h-8 w-8 ${stat.color}`} />
-                </div>
-                <h3 className="text-2xl font-bold text-slate-800 mb-1">{stat.value}</h3>
-                <p className="text-sm text-slate-600">{stat.label}</p>
-              </motion.div>
-            ))}
-          </div>
-
-          {/* Quick Actions */}
-          <div>
-            <h3 className="text-xl font-bold text-slate-800 mb-4">Quick Actions</h3>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              {[
-                { name: "Bulk Order", icon: Package },
-                { name: "Schedule Delivery", icon: Calendar },
-                { name: "Team Management", icon: Users },
-                { name: "Volume Pricing", icon: DollarSign },
-              ].map((action, index) => (
-                <motion.button
-                  key={action.name}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 0.4 + index * 0.1 }}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="p-4 bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl border border-blue-200 hover:shadow-md transition-all"
-                >
-                  <action.icon className="h-6 w-6 text-blue-600 mx-auto mb-2" />
-                  <p className="text-sm font-medium text-slate-700">{action.name}</p>
-                </motion.button>
-              ))}
-            </div>
-          </div>
-
-          {/* Recent Orders */}
-          <div>
-            <h3 className="text-xl font-bold text-slate-800 mb-4">Recent Orders</h3>
-            <div className="space-y-4">
-              {recentOrders.map((order, index) => (
-                <motion.div
-                  key={order.id}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.8 + index * 0.1 }}
-                  className="flex items-center justify-between p-4 bg-slate-50 rounded-xl hover:bg-slate-100 transition-colors"
-                >
-                  <div>
-                    <h4 className="font-semibold text-slate-800">{order.project}</h4>
-                    <p className="text-sm text-slate-600">Order ID: {order.id}</p>
-                  </div>
-                  <div className="text-right">
-                    <p className="font-bold text-slate-800">{order.amount}</p>
-                    <span
-                      className={`text-xs px-2 py-1 rounded-full ${
-                        order.status === "Delivered"
-                          ? "bg-green-100 text-green-700"
-                          : order.status === "In Transit"
-                            ? "bg-blue-100 text-blue-700"
-                            : "bg-orange-100 text-orange-700"
-                      }`}
-                    >
-                      {order.status}
-                    </span>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
+          {/* Coupon/Offer Message */}
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="bg-gradient-to-r from-green-50 to-blue-50 border border-green-200 rounded-xl p-6 mb-6 text-center shadow-lg"
+          >
+            <div className="text-2xl font-bold text-green-700 mb-2">Congratulations! 🎉</div>
+            <div className="text-lg font-semibold text-slate-800 mb-2">This is your coupon number:</div>
+            <div className="text-3xl font-mono font-bold text-blue-700 mb-4 select-all">COUPEN-{Math.floor(100000 + Math.random() * 900000)}</div>
+            <div className="text-red-600 font-semibold mb-2">Do not share this coupon number with anyone.</div>
+            <div className="text-lg text-slate-700 mb-1">This coupon will discount your price to almost <span className='font-bold text-green-700'>wholesale price</span>. Please do not share it with anyone.</div>
+            <div className="text-lg text-slate-700 mb-1">We are offering you <span className="font-bold text-green-700">FREE DELIVERY</span> on your bulk order!</div>
+            <div className="text-base text-slate-600">Visit our shop and purchase for <span className="font-bold">₹47,000 or above</span> to apply all offers mentioned above.</div>
+          </motion.div>
 
           {/* Benefits Section */}
           <div className="bg-gradient-to-r from-blue-50 to-purple-50 p-6 rounded-xl">

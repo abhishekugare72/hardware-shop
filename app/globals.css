@@ -5,10 +5,12 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
   }
 
   body {
     @apply antialiased bg-white text-slate-900;
+    overflow-x: hidden;
   }
 
   * {
@@ -173,4 +175,34 @@
   .no-print {
     display: none !important;
   }
+}
+
+/* Custom thin scrollbar for category buttons */
+.custom-scrollbar-thin::-webkit-scrollbar {
+  height: 6px;
+}
+.custom-scrollbar-thin::-webkit-scrollbar-thumb {
+  background: linear-gradient(to right, #93c5fd, #a5b4fc, #c7d2fe);
+  border-radius: 4px;
+}
+.custom-scrollbar-thin::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+@keyframes bounceLeft {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(-8px); }
+}
+.animate-bounce-left {
+  animation: bounceLeft 1.2s infinite;
+}
+
+@keyframes bounceRightLeft {
+  0%, 100% { transform: translateY(-50%) translateX(0); }
+  20% { transform: translateY(-50%) translateX(8px); }
+  50% { transform: translateY(-50%) translateX(-4px); }
+  80% { transform: translateY(-50%) translateX(8px); }
+}
+.animate-bounce-right-left {
+  animation: bounceRightLeft 1.8s infinite;
 }

@@ -50,20 +50,20 @@ const features = [
 
 export default function FeaturesSection() {
   return (
-    <section className="py-20 px-4 bg-slate-50">
+    <section className="py--3 px-4 bg-slate-50">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-12"
         >
           <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-slate-900 via-slate-700 to-slate-600 bg-clip-text text-transparent mb-4">
             Why Choose Company Name
           </h2>
           <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-            Experience premium quality and exceptional service with every purchase
+            Premium quality. Exceptional service.
           </p>
         </motion.div>
 
@@ -94,7 +94,7 @@ export default function FeaturesSection() {
               <h3 className="text-xl font-bold text-slate-900 mb-3 group-hover:text-slate-700 transition-colors duration-200">
                 {feature.title}
               </h3>
-              <p className="text-slate-700 text-sm leading-relaxed mb-4">{feature.description}</p>
+              <p className="text-slate-700 text-sm leading-relaxed mb-4">{feature.description.split(' ')[0] + (feature.description.includes(' ') ? '' : feature.description)}</p>
 
               {/* Progress Bar */}
               <motion.div
@@ -106,66 +106,6 @@ export default function FeaturesSection() {
             </motion.div>
           ))}
         </div>
-
-        {/* Stats Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-          viewport={{ once: true }}
-          className="mt-20 bg-gradient-to-r from-slate-900 to-slate-800 rounded-3xl p-12 text-white"
-        >
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            <div>
-              <motion.h3
-                initial={{ scale: 0 }}
-                whileInView={{ scale: 1 }}
-                transition={{ duration: 0.5, delay: 0.5 }}
-                viewport={{ once: true }}
-                className="text-4xl md:text-5xl font-bold text-blue-400 mb-2"
-              >
-                5K+
-              </motion.h3>
-              <p className="text-slate-300 text-sm font-medium">Premium Products</p>
-            </div>
-            <div>
-              <motion.h3
-                initial={{ scale: 0 }}
-                whileInView={{ scale: 1 }}
-                transition={{ duration: 0.5, delay: 0.6 }}
-                viewport={{ once: true }}
-                className="text-4xl md:text-5xl font-bold text-purple-400 mb-2"
-              >
-                25+
-              </motion.h3>
-              <p className="text-slate-300 text-sm font-medium">Years Excellence</p>
-            </div>
-            <div>
-              <motion.h3
-                initial={{ scale: 0 }}
-                whileInView={{ scale: 1 }}
-                transition={{ duration: 0.5, delay: 0.7 }}
-                viewport={{ once: true }}
-                className="text-4xl md:text-5xl font-bold text-green-400 mb-2"
-              >
-                10K+
-              </motion.h3>
-              <p className="text-slate-300 text-sm font-medium">Happy Customers</p>
-            </div>
-            <div>
-              <motion.h3
-                initial={{ scale: 0 }}
-                whileInView={{ scale: 1 }}
-                transition={{ duration: 0.5, delay: 0.8 }}
-                viewport={{ once: true }}
-                className="text-4xl md:text-5xl font-bold text-orange-400 mb-2"
-              >
-                50+
-              </motion.h3>
-              <p className="text-slate-300 text-sm font-medium">Expert Staff</p>
-            </div>
-          </div>
-        </motion.div>
       </div>
     </section>
   )

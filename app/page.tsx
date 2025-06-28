@@ -5,8 +5,8 @@ import { motion, AnimatePresence } from "framer-motion"
 import Navigation from "./components/Navigation"
 import HeroSection from "./components/HeroSection"
 import FeaturesSection from "./components/FeaturesSection"
-import CategoryGrid from "./components/CategoryGrid"
 import ProductShowcase from "./components/ProductShowcase"
+import ProductGallery from "./components/ProductGallery"
 import ServicesSection from "./components/ServicesSection"
 import AboutSection from "./components/AboutSection"
 import Footer from "./components/Footer"
@@ -15,6 +15,7 @@ import MaterialQuiz from "./components/MaterialQuiz"
 import ProjectCalculator from "./components/ProjectCalculator"
 import SustainabilityDashboard from "./components/SustainabilityDashboard"
 import ContractorDashboard from "./components/ContractorDashboard"
+import TestimonialsSection from "./components/TestimonialsSection"
 
 export default function HomePage() {
   const [cartItems, setCartItems] = useState(0)
@@ -34,7 +35,7 @@ export default function HomePage() {
   }, [])
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white pt-16 sm:pt-8 overflow-x-hidden">
       <Navigation
         onARClick={() => setShowARPreview(true)}
         onQuizClick={() => setShowQuiz(true)}
@@ -43,9 +44,26 @@ export default function HomePage() {
         onContractorClick={() => setShowContractorDashboard(true)}
       />
 
-      <HeroSection />
+      <div id="hero">
+        <HeroSection />
+      </div>
 
       <motion.div
+        id="top-deals"
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.2 }}
+        viewport={{ once: true, margin: "-100px" }}
+      >
+        <ProductShowcase />
+      </motion.div>
+
+      <div id="gallery">
+        <ProductGallery />
+      </div>
+
+      <motion.div
+        id="features"
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
@@ -55,24 +73,7 @@ export default function HomePage() {
       </motion.div>
 
       <motion.div
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        viewport={{ once: true, margin: "-100px" }}
-      >
-        <CategoryGrid />
-      </motion.div>
-
-      <motion.div
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.2 }}
-        viewport={{ once: true, margin: "-100px" }}
-      >
-        <ProductShowcase onAddToCart={addToCart} />
-      </motion.div>
-
-      <motion.div
+        id="services"
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
@@ -82,6 +83,7 @@ export default function HomePage() {
       </motion.div>
 
       <motion.div
+        id="about"
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}

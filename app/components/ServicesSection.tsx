@@ -45,9 +45,9 @@ export default function ServicesSection() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-slate-800 mb-4">Professional Services</h2>
+          <h2 className="text-4xl md:text-5xl font-bold text-slate-800 mb-4">Other Services</h2>
           <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-            Beyond products, we offer comprehensive services to support your construction and renovation projects
+            Comprehensive services for your construction and renovation projects.
           </p>
         </motion.div>
 
@@ -63,13 +63,13 @@ export default function ServicesSection() {
             >
               <div className="bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-slate-100">
                 {/* Image */}
-                <div className="relative h-64 overflow-hidden">
+                <div className="relative h-64 w-full flex items-center justify-center overflow-hidden">
                   <motion.img
                     whileHover={{ scale: 1.1 }}
                     transition={{ duration: 0.5 }}
                     src={service.image}
                     alt={service.title}
-                    className="w-full h-full object-cover"
+                    className="max-h-full max-w-full object-contain"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
 
@@ -87,7 +87,7 @@ export default function ServicesSection() {
                   <h3 className="text-2xl font-bold text-slate-800 mb-3 group-hover:text-sky-600 transition-colors">
                     {service.title}
                   </h3>
-                  <p className="text-slate-600 mb-6 leading-relaxed">{service.description}</p>
+                  <p className="text-slate-600 mb-6 leading-relaxed">{service.description.split(' ')[0] + (service.description.includes(' ') ? '.' : service.description)}</p>
 
                   {/* Features */}
                   <ul className="space-y-3 mb-6">
@@ -119,46 +119,6 @@ export default function ServicesSection() {
             </motion.div>
           ))}
         </div>
-
-        {/* Service Areas */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-          viewport={{ once: true }}
-          className="mt-20 bg-gradient-to-r from-sky-50 to-purple-50 rounded-3xl p-8 md:p-12"
-        >
-          <div className="text-center mb-12">
-            <h3 className="text-3xl font-bold text-slate-800 mb-4">Service Areas</h3>
-            <p className="text-slate-600 max-w-2xl mx-auto">
-              We proudly serve Bengaluru and surrounding areas with our full range of services
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-r from-sky-500 to-blue-500 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <MapPin className="h-8 w-8 text-white" />
-              </div>
-              <h4 className="text-xl font-bold text-slate-800 mb-2">Bengaluru Metro</h4>
-              <p className="text-slate-600">Same-day delivery and installation services</p>
-            </div>
-            <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <Clock className="h-8 w-8 text-white" />
-              </div>
-              <h4 className="text-xl font-bold text-slate-800 mb-2">Extended Hours</h4>
-              <p className="text-slate-600">Emergency services available 24/7</p>
-            </div>
-            <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-r from-green-500 to-emerald-500 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <Users className="h-8 w-8 text-white" />
-              </div>
-              <h4 className="text-xl font-bold text-slate-800 mb-2">Expert Team</h4>
-              <p className="text-slate-600">Certified professionals with 10+ years experience</p>
-            </div>
-          </div>
-        </motion.div>
       </div>
     </section>
   )

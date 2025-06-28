@@ -1,7 +1,7 @@
 "use client"
 
 import { motion, useScroll, useTransform } from "framer-motion"
-import { ArrowRight, MapPin, Star, Award, Users, ShoppingBag, Phone, Clock } from "lucide-react"
+import { ArrowRight, MapPin, Star, Award, Users, ShoppingBag, Phone, Clock, Mail } from "lucide-react"
 import { useRef } from "react"
 
 export default function HeroSection() {
@@ -17,7 +17,7 @@ export default function HeroSection() {
   return (
     <section
       ref={ref}
-      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-50 via-white to-blue-50 pt-20 sm:pt-24 md:pt-28 lg:pt-24 pb-8 sm:pb-12 md:pb-16"
+      className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-gradient-to-br from-slate-50 via-white to-blue-50 pt-0 pb-8 sm:pb-12 md:pb-16"
     >
       {/* Enhanced Background with Geometric Shapes */}
       <motion.div style={{ y, opacity }} className="absolute inset-0 z-0">
@@ -67,7 +67,7 @@ export default function HeroSection() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.1 }}
-                className="inline-flex items-center space-x-2 sm:space-x-3 bg-gradient-to-r from-blue-50 to-purple-50 border border-blue-200/50 rounded-full px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 shadow-lg"
+                className="inline-flex items-center space-x-2 sm:space-x-3 bg-gradient-to-r from-blue-50 to-purple-50 border border-blue-200/50 rounded-full px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 shadow-lg mt-4 sm:mt-0"
               >
                 <Award className="h-4 sm:h-5 md:h-6 w-4 sm:w-5 md:w-6 text-blue-600" />
                 <span className="text-blue-700 font-semibold text-sm sm:text-base">25+ Years of Excellence</span>
@@ -81,11 +81,8 @@ export default function HeroSection() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1, delay: 0.3 }}
               >
-                <span className="bg-gradient-to-r from-slate-900 via-blue-800 to-purple-800 bg-clip-text text-transparent block text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl">
-                  Complete Construction
-                </span>
-                <span className="block text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl bg-gradient-to-r from-slate-600 to-slate-500 bg-clip-text text-transparent mt-2 sm:mt-3 md:mt-4 lg:mt-6">
-                  Materials Store
+                <span className="bg-gradient-to-r from-slate-900 via-blue-800 to-purple-800 bg-clip-text text-transparent text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl">
+                  All Construction Materials 
                 </span>
               </motion.h1>
 
@@ -97,38 +94,8 @@ export default function HeroSection() {
                 className="space-y-3 sm:space-y-4"
               >
                 <p className="text-base sm:text-lg md:text-xl text-slate-600 leading-relaxed">
-                  From A to Z - Steel, Cement, Doors, Windows, Marble, Tiles & Everything You Need for Construction.
+                  Premium construction materials for every project.
                 </p>
-                <p className="text-base sm:text-lg md:text-xl font-semibold text-slate-700 relative overflow-hidden shimmer-text">
-                  Visit our store for the largest inventory in the city!
-                </p>
-              </motion.div>
-
-              {/* Enhanced Stats Row - Fully Responsive */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1, delay: 0.6 }}
-                className="grid grid-cols-3 gap-3 sm:gap-4 md:gap-6 lg:gap-8"
-              >
-                <div className="text-center p-3 sm:p-4 md:p-6 bg-white/60 backdrop-blur-sm rounded-xl sm:rounded-2xl border border-white/50 shadow-lg">
-                  <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-1 sm:mb-2">
-                    5K+
-                  </div>
-                  <div className="text-xs sm:text-sm md:text-base text-slate-600 font-medium">Premium Products</div>
-                </div>
-                <div className="text-center p-3 sm:p-4 md:p-6 bg-white/60 backdrop-blur-sm rounded-xl sm:rounded-2xl border border-white/50 shadow-lg">
-                  <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent mb-1 sm:mb-2">
-                    10K+
-                  </div>
-                  <div className="text-xs sm:text-sm md:text-base text-slate-600 font-medium">Happy Customers</div>
-                </div>
-                <div className="text-center p-3 sm:p-4 md:p-6 bg-white/60 backdrop-blur-sm rounded-xl sm:rounded-2xl border border-white/50 shadow-lg">
-                  <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent mb-1 sm:mb-2">
-                    50+
-                  </div>
-                  <div className="text-xs sm:text-sm md:text-base text-slate-600 font-medium">Expert Staff</div>
-                </div>
               </motion.div>
 
               {/* Action Buttons - Fully Responsive */}
@@ -141,7 +108,7 @@ export default function HeroSection() {
                 <motion.button
                   whileHover={{ scale: 1.02, boxShadow: "0 25px 50px rgba(0,0,0,0.2)" }}
                   whileTap={{ scale: 0.98 }}
-                  className="group px-6 sm:px-8 md:px-12 py-3 sm:py-4 md:py-6 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl sm:rounded-2xl font-semibold text-base sm:text-lg flex items-center justify-center space-x-2 sm:space-x-3 md:space-x-4 shadow-2xl hover:shadow-3xl transition-all duration-300 relative overflow-hidden"
+                  className="group px-6 sm:px-8 md:px-10 py-2 sm:py-2.5 md:py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full sm:rounded-xl font-semibold text-base sm:text-lg flex items-center justify-center space-x-2 sm:space-x-3 md:space-x-4 shadow-xl hover:shadow-2xl transition-all duration-300 relative overflow-hidden"
                 >
                   <div className="absolute inset-0 bg-gradient-to-r from-blue-700 to-purple-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   <ShoppingBag className="h-5 sm:h-6 w-5 sm:w-6 relative z-10" />
@@ -158,7 +125,7 @@ export default function HeroSection() {
                 <motion.button
                   whileHover={{ scale: 1.02, boxShadow: "0 20px 40px rgba(0,0,0,0.1)" }}
                   whileTap={{ scale: 0.98 }}
-                  className="px-6 sm:px-8 md:px-12 py-3 sm:py-4 md:py-6 bg-white/90 backdrop-blur-sm text-slate-700 rounded-xl sm:rounded-2xl font-semibold text-base sm:text-lg flex items-center justify-center space-x-2 sm:space-x-3 md:space-x-4 border border-slate-200 hover:border-slate-300 transition-all duration-300 shadow-xl hover:shadow-2xl"
+                  className="px-6 sm:px-8 md:px-10 py-2 sm:py-2.5 md:py-3 bg-white/90 backdrop-blur-sm text-slate-700 rounded-full sm:rounded-xl font-semibold text-base sm:text-lg flex items-center justify-center space-x-2 sm:space-x-3 md:space-x-4 border border-slate-200 hover:border-slate-300 transition-all duration-300 shadow-lg hover:shadow-xl"
                 >
                   <MapPin className="h-5 sm:h-6 w-5 sm:w-6" />
                   <span>Get Directions</span>
@@ -191,25 +158,6 @@ export default function HeroSection() {
                     <div className="text-xs sm:text-sm text-slate-500">Professional & DIY enthusiasts</div>
                   </div>
                 </div>
-
-                <div className="flex items-center space-x-2 sm:space-x-3">
-                  <div className="flex items-center space-x-0.5 sm:space-x-1">
-                    {[1, 2, 3, 4, 5].map((i) => (
-                      <motion.div
-                        key={i}
-                        initial={{ scale: 0, rotate: -180 }}
-                        animate={{ scale: 1, rotate: 0 }}
-                        transition={{ duration: 0.3, delay: 1.2 + i * 0.1 }}
-                      >
-                        <Star className="h-4 sm:h-5 md:h-6 w-4 sm:w-5 md:w-6 text-yellow-400 fill-current" />
-                      </motion.div>
-                    ))}
-                  </div>
-                  <div className="space-y-0.5 sm:space-y-1">
-                    <div className="text-sm sm:text-base font-semibold text-slate-700">4.9/5 Rating</div>
-                    <div className="text-xs sm:text-sm text-slate-500">Based on 2.5K+ reviews</div>
-                  </div>
-                </div>
               </motion.div>
             </motion.div>
 
@@ -218,7 +166,7 @@ export default function HeroSection() {
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 1, delay: 0.4 }}
-              className="lg:col-span-5 relative mt-8 lg:mt-0"
+              className="lg:col-span-5 relative mt-16 lg:mt-20"
             >
               {/* Main Visual Card - Responsive */}
               <div className="relative">
@@ -247,10 +195,10 @@ export default function HeroSection() {
                   {/* Enhanced Product Grid - Responsive */}
                   <div className="grid grid-cols-2 gap-3 sm:gap-4 md:gap-6 mb-6 sm:mb-8 md:mb-10">
                     {[
-                      { name: "Steel & Iron", color: "from-slate-400 to-slate-600", icon: "🏗️", count: "2.5K+" },
-                      { name: "Cement", color: "from-stone-400 to-stone-600", icon: "🧱", count: "1.8K+" },
-                      { name: "Tiles", color: "from-emerald-400 to-emerald-600", icon: "🏠", count: "4.1K+" },
-                      { name: "Tools", color: "from-purple-400 to-purple-600", icon: "🔧", count: "3.5K+" },
+                      { name: "Steel & Iron", color: "from-slate-400 to-slate-600", icon: "🏗️" },
+                      { name: "Cement", color: "from-stone-400 to-stone-600", icon: "🧱" },
+                      { name: "Paints", color: "from-emerald-400 to-emerald-600", icon: "🎨" },
+                      { name: "Tools", color: "from-purple-400 to-purple-600", icon: "🔧" },
                     ].map((item, index) => (
                       <motion.div
                         key={item.name}
@@ -260,9 +208,6 @@ export default function HeroSection() {
                         whileHover={{ scale: 1.05, y: -2 }}
                         className={`p-4 sm:p-6 md:p-8 bg-gradient-to-r ${item.color} rounded-xl sm:rounded-2xl text-white text-center cursor-pointer shadow-lg hover:shadow-xl transition-all duration-300 relative overflow-hidden`}
                       >
-                        <div className="absolute top-2 sm:top-3 right-2 sm:right-3 text-xs bg-white/20 backdrop-blur-sm px-2 sm:px-3 py-0.5 sm:py-1 rounded-full font-bold">
-                          {item.count}
-                        </div>
                         <div className="text-2xl sm:text-3xl md:text-4xl mb-2 sm:mb-3 md:mb-4">{item.icon}</div>
                         <div className="text-xs sm:text-sm font-bold">{item.name}</div>
                       </motion.div>
@@ -307,32 +252,6 @@ export default function HeroSection() {
                 </motion.div>
 
                 {/* Enhanced Floating Elements - Responsive */}
-                <motion.div
-                  animate={{ y: [0, -15, 0], rotate: [0, 5, 0] }}
-                  transition={{ duration: 5, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut", delay: 1 }}
-                  className="absolute -top-4 sm:-top-6 md:-top-8 -right-4 sm:-right-6 md:-right-8 w-16 sm:w-20 md:w-24 lg:w-28 h-16 sm:h-20 md:h-24 lg:h-28 bg-gradient-to-r from-blue-400 to-purple-400 rounded-2xl sm:rounded-3xl flex items-center justify-center shadow-xl border-2 sm:border-3 md:border-4 border-white"
-                >
-                  <div className="text-center">
-                    <div className="text-white font-bold text-sm sm:text-base md:text-lg lg:text-xl">25+</div>
-                    <div className="text-white/80 text-xs sm:text-sm">Years</div>
-                  </div>
-                </motion.div>
-
-                <motion.div
-                  animate={{ y: [0, 12, 0], rotate: [0, -3, 0] }}
-                  transition={{ duration: 6, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut", delay: 2 }}
-                  className="absolute -bottom-4 sm:-bottom-6 md:-bottom-8 -left-4 sm:-left-6 md:-left-8 w-14 sm:w-18 md:w-20 lg:w-24 h-14 sm:h-18 md:h-20 lg:h-24 bg-gradient-to-r from-green-400 to-emerald-400 rounded-full flex items-center justify-center shadow-xl border-2 sm:border-3 md:border-4 border-white"
-                >
-                  <Star className="h-6 sm:h-7 md:h-8 lg:h-10 w-6 sm:w-7 md:w-8 lg:w-10 text-white fill-current" />
-                </motion.div>
-
-                <motion.div
-                  animate={{ y: [0, -8, 0], x: [0, 5, 0] }}
-                  transition={{ duration: 7, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut", delay: 3 }}
-                  className="absolute top-1/2 -left-3 sm:-left-4 md:-left-6 w-12 sm:w-16 md:w-18 lg:w-20 h-12 sm:h-16 md:h-18 lg:h-20 bg-gradient-to-r from-yellow-400 to-orange-400 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-lg border-2 sm:border-3 md:border-4 border-white"
-                >
-                  <Award className="h-5 sm:h-6 md:h-7 lg:h-8 w-5 sm:w-6 md:w-7 lg:w-8 text-white" />
-                </motion.div>
               </div>
             </motion.div>
           </div>
@@ -344,7 +263,7 @@ export default function HeroSection() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5 }}
-        className="absolute bottom-6 sm:bottom-8 md:bottom-12 left-1/2 transform -translate-x-1/2 text-center"
+        className="text-center mt-8 mb-4 sm:mb-8 md:mb-12 w-full"
       >
         <motion.div
           animate={{ y: [0, 8, 0] }}

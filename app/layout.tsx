@@ -6,11 +6,11 @@ import "./globals.css"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Company Name - Premium Hardware & Construction Materials",
+  title: "Hardware Ecommerce - Premium Construction Materials & Tools",
   description:
-    "Professional hardware and construction materials for contractors and DIY enthusiasts. Features AR preview, AI recommendations, and sustainability tracking.",
-  keywords: "hardware, construction, tools, materials, contractors, DIY, sustainable building",
-    generator: 'v0.dev'
+    "Shop premium hardware, construction materials, and tools for contractors and DIY. Fast delivery, expert advice, and trusted brands. Karnataka's #1 building supply store.",
+  keywords: "hardware, construction, tools, materials, contractors, DIY, building supply, Karnataka, premium, ecommerce, store, fast delivery, expert advice, trusted brands",
+  generator: 'v0.dev'
 }
 
 export default function RootLayout({
